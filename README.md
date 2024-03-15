@@ -1,4 +1,4 @@
-Formulário com validação
+Gerador de conselhos
 
 <img src="src/images/advicegenerator.gif" style="border-radius: 10px" >
 
