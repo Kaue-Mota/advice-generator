@@ -1,6 +1,6 @@
 Formulário com validação
 
-<img src="images/advicegenerator.gif" style="border-radius: 10px" >
+<img src="src/images/advicegenerator.gif" style="border-radius: 10px" >
 
 <div>
 <h2 style="
