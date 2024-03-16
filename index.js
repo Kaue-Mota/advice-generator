@@ -1,27 +1,17 @@
-const numeroConselho = document.getElementById('number')
+const adviceUpdateButton = document.getElementById("btn_atualizar_conselho");
+const adviceNumber = document.getElementById("number");
+const adviceDescription = document.getElementById("advice");
 
-document.getElementById('btn_atualizar_conselho').addEventListener ('click', () =>{
-    tirarConselhoAleatorio()
-})
+async function getAdvice() {
+    const response = await fetch("https://api.adviceslip.com/advice");
+    const adviceContent = await response.json();
+    const adviceId = `Advice #${adviceContent.slip.id}`;
+    const adviceText = `"${adviceContent.slip.advice}"`;
 
-async function criarTodosOsConselhos(){
-    const url = "https://api.adviceslip.com/advice"
-    const resposta = await fetch(url)
-    return await resposta.json()
-   
+    adviceNumber.innerHTML = adviceId;
+    adviceDescription.innerHTML = adviceText;
 }
 
+adviceUpdateButton.addEventListener("click", getAdvice);
 
-
-async function tirarConselhoAleatorio(){
-    const conselhos = await criarTodosOsConselhos()
-    const conselho = (`"${conselhos.slip.advice}"`)
-    const numeroConselho = (`Advice #${conselhos.slip.id}`)
-    console.log(conselho)
-    document.getElementById('advice').textContent = conselho
-    document.getElementById('number').textContent = numeroConselho
-   
-    
-}
-
-tirarConselhoAleatorio()
+getAdvice();
